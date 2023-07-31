@@ -2,12 +2,15 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = {
-  name: string
+  nombre: string
 }
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
-  res.status(200).json({ name: 'John Doe' })
+export default function handler( req: NextApiRequest, res: NextApiResponse<Data>) {
+
+  console.log( req.cookies );
+
+  res.status(200).json({ 
+    nombre: 'John Doe',
+    ...req.cookies
+   })
 }
